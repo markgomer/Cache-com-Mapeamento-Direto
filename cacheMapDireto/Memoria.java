@@ -25,9 +25,9 @@ class EnderecoInvalido extends Exception {
 // Memória (base)
 
 abstract class Memoria {
-    protected long capacidade;
+    protected int capacidade;
 
-    public Memoria(long capacidade) { this.capacidade = capacidade; }
+    public Memoria(int capacidade) { this.capacidade = capacidade; }
     public void VerificaEndereco(int endereco) throws EnderecoInvalido {
         if (endereco < 0 || endereco >= capacidade)
             throw new EnderecoInvalido(endereco);
