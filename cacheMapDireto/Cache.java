@@ -15,7 +15,7 @@ public class Cache extends Memoria {
     }
 
     @Override
-    public int Read(int enderecoBit) {
+    public int Read(int enderecoBit) throws EnderecoInvalido {
         int resp;
         int x = enderecoBit;
         int t, r, s, w;
@@ -40,12 +40,12 @@ public class Cache extends Memoria {
         }
         else {
             // cache miss:
+            System.out.println("CacheMiss - End: " + x);
             // cache line r corresponde a um outro bloco de memória
             if(modificada) {
                 // Se esta cache line tiver sido alterada, ela é copiada para a memória principal
                 // a partir do endereço s
-                //todo: copiar bloco para RAM
-                
+                copyLineToRAM(t_, r);
                 modificada = false;
             }
             // o bloco s da memória principal é trazido para a cache line
@@ -63,6 +63,23 @@ public class Cache extends Memoria {
     }
 
 
+    private void copyLineToRAM(int t_, int r) throws EnderecoInvalido {
+        int i = 0;
+
+        try {
+            while (i < capacidade) {
+                ram.Write(r, dados[r][i]);
+                System.out.println("CopyToRam -> end:" + t_ + " " + r + "content:" + dados[i]);
+                i++;
+            }
+        } catch (EnderecoInvalido e) {
+            while(i < capacidade) {
+                ram.Write(r , dados[r][i]);
+                System.out.println("CopyToRam -> end:" + t_ + " " +  r + "content:" + dados[i]);
+                i++;
+            }
+        }
+    }
 
 
 
