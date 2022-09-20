@@ -22,6 +22,7 @@ public class CPU {
         this.mem = mem;
     }
     public void Run(int ender) throws EnderecoInvalido {
+        System.out.println("ender="+Integer.toBinaryString(ender));
         PC = ender;
 
         // lê "programa" da memória
@@ -32,7 +33,7 @@ public class CPU {
         regC = 1;   // contador
         while (regA <= regB) {
             mem.Write(regA, regC);
-            es.Output("> " + regA + " -> " + regC + "\n");
+            es.Output("> " + Integer.toBinaryString(regA) + " -> " + regC + "\n");
             ++regC;
             ++regA;
         }
