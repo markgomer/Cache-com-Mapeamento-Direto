@@ -1,10 +1,11 @@
-//
-// Arquitetura von Neumann Básica
-// PSCF
-// Prof. Luiz Lima Jr.
-//
-// IO <- CPU <-> RAM
-//
+/**
+ * PSCF
+ * Cache com mapeamento direto
+ * Eduardo Klein Nakatani
+ * Henrique Levandoski Richa
+ * Marco Aurélio Silva de Souza Júnior
+ * Rafael Bauer Sampaio
+ */
 
 package cacheMapDireto;
 
