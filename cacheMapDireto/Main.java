@@ -15,13 +15,13 @@ public class Main {
         
         // cria componentes da arquitetura
         IO io = new IO(System.out);
-        RAM ram = new RAM((int)2E+23);
+        RAM ram = new RAM(8_388_608); // 8M
         Cache cache = new Cache(4096, 64, ram);
         CPU cpu = new CPU(io, cache);
         
         try {
             // carrega "programa" na memória
-            final int inicio = 10;
+            final int inicio = 0b00001111;
             ram.Write(inicio, 118);
             ram.Write(inicio+1, 130);
             // executa programa
